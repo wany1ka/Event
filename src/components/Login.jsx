@@ -2,6 +2,7 @@ import { signInWithPopup } from "firebase/auth";
 import React, { useEffect } from "react";
 import { auth, provider } from "./ConfigFirebase";
 import { useNavigate } from "react-router-dom";
+import './styles/login.css'
 
 function Login() {
 
@@ -25,9 +26,9 @@ function Login() {
         })
     })
     return (
-        <div>
-            <h1 className="text">Step into a world of modern conferencing</h1>
-            <button onClick={handleClick}>Google Sign up</button>
+        <div className="logIn">
+            <h1 className="font-bold">Step into a world of modern conferencing</h1>
+            <button className="button" onClick={handleClick}>Google Sign up</button>
         </div>
     )
 }
