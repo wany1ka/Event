@@ -8,14 +8,15 @@ const Navbar = () => {
                     <Link to="/" className="text-white hover:text-gray-300">Home</Link>
                 </li>
                 <ul className="flex justify-center space-x-4">
-
-                    <li>
+                   <li>
                         <Link to="/about" className="text-white hover:text-gray-300">About</Link>
                     </li>
                 </ul>
             </div>
+
         </nav>
     )
 }
+
 
 export default Navbar;
