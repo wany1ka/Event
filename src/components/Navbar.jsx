@@ -12,6 +12,9 @@ const Navbar = () => {
                    <li>
                         <Link to="/contact" className="text-white hover:text-gray-300">Contact</Link>
                     </li>
+                    <li>
+                        <Link to="/chat" className="text-white hover:text-gray-300">Chat</Link>
+                    </li>
                 </ul>
 
             </div>
