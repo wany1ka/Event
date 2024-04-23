@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './styles/ChatApp';
+import './styles/ChatApp.css';
 
 function Message({ text, sender }) {
   return (
@@ -46,6 +46,7 @@ function Chat() {
           onChange={handleInputChange}
           placeholder="Type your message..."
           className="input-field"
+          style={{color:'#023047'}}
         />
         <button onClick={sendMessage} className="send-button">Send</button>
       </div>
