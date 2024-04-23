@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   MeetingProvider,
+  MeetingConsumer,
   useMeeting,
   useParticipant,
 } from "@videosdk.live/react-sdk";
+import { authToken, createMeeting } from "./ConfrenceAPI";
 import ReactPlayer from "react-player";
 
 function ParticipantView(props) {
@@ -39,16 +41,23 @@ function ParticipantView(props) {
   
     return (
       <div>
+        <p>
+          Participant: {displayName} | Webcam: {webcamOn ? "ON" : "OFF"} | Mic:{" "}
+          {micOn ? "ON" : "OFF"}
+        </p>
         <audio ref={micRef} autoPlay playsInline muted={isLocal} />
         {webcamOn && (
           <ReactPlayer
-            playsinline // very very imp prop
+            //
+            playsinline // extremely crucial prop
             pip={false}
             light={false}
             controls={false}
             muted={true}
             playing={true}
+            //
             url={videoStream}
+            //
             height={"300px"}
             width={"300px"}
             onError={(err) => {

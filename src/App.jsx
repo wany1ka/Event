@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import ChatApp from "./components/Chat"
 import Conference from "./components/Confrence";
+import Live from "./components/Live";
 
 function App() {
     return ( 
@@ -20,6 +21,7 @@ function App() {
                     <Route path='/contact' element={<ContactForm />} />
                     <Route path='/chat' element={<ChatApp />} />
                     <Route path='/conference' element={<Conference />} />
+                    <Route path='/live' element={<Live />} />
                 </Routes>
             <Footer />
             </BrowserRouter>
