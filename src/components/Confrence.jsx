@@ -8,7 +8,67 @@ import {
 import { authToken, createMeeting } from "./ConfrenceAPI";
 import ReactPlayer from "react-player";
 
-function ParticipantView(props) {
+function JoinScreen({ getMeetingAndToken }) {
+    const [meetingId, setMeetingId] = useState(null);
+    const onClick = async () => {
+      await getMeetingAndToken(meetingId);
+    };
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="Enter Meeting Id"
+          onChange={(e) => {
+            setMeetingId(e.target.value);
+          }}
+        />
+        <button onClick={onClick}>Join</button>
+        {" or "}
+        <button onClick={onClick}>Create Meeting</button>
+      </div>
+    );
+  }
+
+  function MeetingView(props) {
+    const [joined, setJoined] = useState(null);
+    
+    const { join, participants } = useMeeting({
+      onMeetingJoined: () => {
+        setJoined("JOINED");
+      },
+      onMeetingLeft: () => {
+        props.onMeetingLeave();
+      },
+    });
+    const joinMeeting = () => {
+      setJoined("JOINING");
+      join();
+    };
+  
+    return (
+      <div className="container">
+        <h3>Meeting Id: {props.meetingId}</h3>
+        {joined && joined == "JOINED" ? (
+          <div>
+            <Controls />
+            //For rendering all the participants in the meeting
+            {[...participants.keys()].map((participantId) => (
+              <ParticipantView
+                participantId={participantId}
+                key={participantId}
+              />
+            ))}
+          </div>
+        ) : joined && joined == "JOINING" ? (
+          <p>Joining the meeting...</p>
+        ) : (
+          <button onClick={joinMeeting}>Join</button>
+        )}
+      </div>
+    );
+  }
+
+  function ParticipantView(props) {
     const micRef = useRef(null);
     const { webcamStream, micStream, webcamOn, micOn, isLocal, displayName } =
       useParticipant(props.participantId);
@@ -48,16 +108,13 @@ function ParticipantView(props) {
         <audio ref={micRef} autoPlay playsInline muted={isLocal} />
         {webcamOn && (
           <ReactPlayer
-            //
-            playsinline // extremely crucial prop
+            playsinline
             pip={false}
             light={false}
             controls={false}
             muted={true}
             playing={true}
-            //
             url={videoStream}
-            //
             height={"300px"}
             width={"300px"}
             onError={(err) => {
@@ -69,53 +126,45 @@ function ParticipantView(props) {
     );
   }
 
-function MeetingView() {
-  const [joined, setJoined] = useState(null);
+function Controls() {
+    const { leave, toggleMic, toggleWebcam } = useMeeting();
+    return (
+      <div>
+        <button onClick={() => leave()}>Leave</button>
+        <button onClick={() => toggleMic()}>toggleMic</button>
+        <button onClick={() => toggleWebcam()}>toggleWebcam</button>
+      </div>
+    );
+  }
 
-  const { join, participants } = useMeeting({
-
-    onMeetingJoined: () => {
-      setJoined("JOINED");
-    }
-  });
-  const joinMeeting = () => {
-    setJoined("JOINING");
-    join();
-  };
-
-  return (
-    <div className="container">
-      {joined && joined == "JOINED" ? (
-        <div>
-          {[...participants.keys()].map((participantId) => (
-            <ParticipantView
-              participantId={participantId}
-              key={participantId}
-            />
-          ))}
-        </div>
-      ) : joined && joined == "JOINING" ? (
-        <p>Joining the meeting...</p>
-      ) : (
-        <button onClick={joinMeeting}>Join the meeting</button>
-      )}
-    </div>
-  );
-}
-
-const Conference = () => {
- return (
-  <MeetingProvider
-  config={{
-    meetingId: "r25r-vy3l-l1kx",
-    micEnabled: true,
-    webcamEnabled: true,
-    name: "Mark's Org",
-  }}
-  token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiOGFjNDBiZS1mYjBkLTRkNmMtODIzOS0wZjQ5MjAzNTEwN2YiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcxMzg2NTA5OCwiZXhwIjoxNzEzOTUxNDk4fQ.yE0prHEeqvCXgPn38Xo8CtE699JN81z7m9evLb5PdPs"
->
-  <MeetingView />
-</MeetingProvider>
- )
-};
-export default Conference;
+function Conference() {
+    const [meetingId, setMeetingId] = useState(null);
+  
+    const getMeetingAndToken = async (id) => {
+      const meetingId =
+        id == null ? await createMeeting({ token: authToken }) : id;
+      setMeetingId(meetingId);
+    };
+  
+    const onMeetingLeave = () => {
+      setMeetingId(null);
+    };
+  
+    return authToken && meetingId ? (
+      <MeetingProvider
+        config={{
+          meetingId,
+          micEnabled: true,
+          webcamEnabled: true,
+          name: "C.V. Raman",
+        }}
+        token={authToken}
+      >
+        <MeetingView meetingId={meetingId} onMeetingLeave={onMeetingLeave} />
+      </MeetingProvider>
+    ) : (
+      <JoinScreen getMeetingAndToken={getMeetingAndToken} />
+    );
+  }
+  
+  export default Conference;
