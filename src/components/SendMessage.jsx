@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { auth, db } from "./firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import './styles/ChatApp.css'
 
 const SendMessage = ({ scroll }) => {
     const [message, setMessage] = useState("");
@@ -24,7 +25,7 @@ const SendMessage = ({ scroll }) => {
       };
 
   return (
-    <form  onSubmit={(event) => sendMessage(event)} className="send-message">
+    <form  onSubmit={(event) => sendMessage(event)} className="send-message mx-40">
       <label htmlFor="messageInput" hidden>
         Enter Message
       </label>
@@ -32,7 +33,7 @@ const SendMessage = ({ scroll }) => {
         id="messageInput"
         name="messageInput"
         type="text"
-        className="form-input__input text-black"
+        className="form-input__input text-black mx-"
         placeholder="type message..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}

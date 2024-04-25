@@ -7,11 +7,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import Conference from "./components/Confrence";
-import SendMessage from "./components/SendMessage";
 import Live from "./components/Live";
 import SpeakerScreenContainer from "./components/screens/speakerScreen/SpeakerScreenContainer";
 import ViewerScreenContainer from "./components/screens/ViewerScreenContainer";
 import WelcomeScreenContainer from "./components/screens/WelcomeScreenContainer";
+import ChatBox from "./components/ChatBox";
 
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
                     <Route path='/home' element={<HomePage />} />
                     <Route path='/contact' element={<ContactForm />} />
                     <Route path='/conference' element={<Conference />} />
-                    <Route path='/chat' element={<SendMessage />} />
+                    <Route path='/chat' element={<ChatBox />} />
                     <Route path='/live' element={<Live />} />
                     <Route path='/SpeakerScreenContainer' element={<SpeakerScreenContainer meetingId={appData.meetingId} />} />
                     <Route path='/ViewerScreenContainer' element={<ViewerScreenContainer meetingId={appData.meetingId} />} />

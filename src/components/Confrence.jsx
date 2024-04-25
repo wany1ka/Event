@@ -7,48 +7,6 @@ import {
 } from "@videosdk.live/react-sdk";
 import { authToken, createMeeting } from "./ConfrenceAPI";
 import ReactPlayer from "react-player";
-import { usePubSub } from "@videosdk.live/react-sdk";
-
-function ChatView() {
-  // destructure publish method from usePubSub hook
-  const { publish, messages } = usePubSub("CHAT", {
-    onMessageReceived: (message) => {
-      window.alert(message.senderName + "says" + message.message);
-    }
-  });
-
-  // State to store the user typed message
-  const [message, setMessage] = useState("");
-
-  const handleSendMessage = () => {
-    // Sending the Message using the publish method
-    publish(message, { persist: true });
-    // Clearing the message input
-    setMessage("");
-  };
-
-  return (
-    <>
-      <div>
-        <p>Messages: </p>
-        {messages.map((message) => {
-          return (
-            <p>
-              {messsage.senderName} says {message.message}
-            </p>
-          );
-        })}
-      </div>
-      <input
-        value={message}
-        onChange={(e) => {
-          setMessage(e.target.value);
-        }}
-      />
-      <button onClick={handleSendMessage}>Send Message</button>
-    </>
-  );
-}
 
 function JoinScreen({ getMeetingAndToken }) {
   const [meetingId, setMeetingId] = useState(null);
@@ -204,7 +162,6 @@ function Conference() {
       token={authToken}
     >
       <MeetingView meetingId={meetingId} onMeetingLeave={onMeetingLeave} />
-      <ChatView /> {/* Include ChatView here */}
     </MeetingProvider>
   ) : (
     <JoinScreen getMeetingAndToken={getMeetingAndToken} />
