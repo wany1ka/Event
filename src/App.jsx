@@ -7,12 +7,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
 import Conference from "./components/Confrence";
-import Live from "./components/Live";
 import SpeakerScreenContainer from "./components/screens/speakerScreen/SpeakerScreenContainer";
 import ViewerScreenContainer from "./components/screens/ViewerScreenContainer";
 import WelcomeScreenContainer from "./components/screens/WelcomeScreenContainer";
 import ChatBox from "./components/ChatBox";
-
+import Live from "./components/Live";
 
 const App = () => {
     const [appData, setAppData] = useState({ meetingId: null, mode: null });
