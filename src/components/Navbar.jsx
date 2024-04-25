@@ -21,6 +21,9 @@ const Navbar = () => {
                     <li>
                         <Link to="/live" className="text-white hover:text-gray-300">Live</Link>
                     </li>
+                    <li>
+                        <Link to="/WelcomeScreenContainer" className="text-white hover:text-gray-300">Livestream</Link>
+                    </li>
                 </ul>
 
             </div>

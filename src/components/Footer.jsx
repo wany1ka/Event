@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom"
 
 const Footer = () => {
     return (
         <footer>
             <div>
-                <hr />
                 <div className="mt-9">
                     <p>Lorem ipsum dolor sit amet, <br />
                     consectetur adipiscing elit, sed do <br />

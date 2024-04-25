@@ -40,7 +40,7 @@ function ParticipantView(props) {
         <audio ref={micRef} autoPlay playsInline muted={isLocal} />
         {webcamOn && (
           <ReactPlayer
-            playsinline
+            playsinline // very very imp prop
             pip={false}
             light={false}
             controls={false}
@@ -116,21 +116,25 @@ const _handleHLS = () => {
 
   function SpeakerView() {
     const [joined, setJoined] = useState(null);
- 
+    //Get the method which will be used to join the meeting.
+    //We will also get the participant list to display all participants
     const { participants } = useMeeting();
     const mMeeting = useMeeting({
       onMeetingJoined: () => {
         setJoined("JOINED");
+        //we will pin the local participant if he joins in CONFERENCE mode
         if (mMeetingRef.current.localParticipant.mode == "CONFERENCE") {
           mMeetingRef.current.localParticipant.pin();
         }
       },
   });
-
+  //We will create a ref to meeting object so that when used inside the
+  //Callback functions, meeting state is maintained
   const mMeetingRef = useRef(mMeeting);
   useEffect(() => {
     mMeetingRef.current = mMeeting;
   }, [mMeeting]);
+  //Filtering the host/speakers from all the participants
   const speakers = useMemo(() => {
     const speakerParticipants = [...participants.values()].filter(
       (participant) => {
@@ -159,8 +163,11 @@ const _handleHLS = () => {
 }
 
 function ViewerView() {
+    // States to store downstream url and current HLS state
     const playerRef = useRef(null);
+    //Getting the hlsUrls
     const { hlsUrls, hlsState } = useMeeting();
+    //Playing the HLS stream when the downstreamUrl is present and it is playable
     useEffect(() => {
       if (hlsUrls.downstreamUrl && hlsState == "HLS_PLAYABLE") {
         if (Hls.isSupported()) {
@@ -184,6 +191,7 @@ function ViewerView() {
     }, [hlsUrls, hlsState, playerRef.current]);
     return (
       <div>
+        {/* Showing message if HLS is not started or is stopped by HOST */}
         {hlsState != "HLS_PLAYABLE" ? (
           <div>
             <p>Please Click Go Live Button to start HLS</p>
@@ -211,7 +219,7 @@ function ViewerView() {
       </div>
     );
     }
-    
+
 const Live = () => {
   const [mode, setMode] = useState(null);
 
@@ -225,7 +233,7 @@ const Live = () => {
         mode,
       }}
       joinWithoutUserInteraction
-      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiOGFjNDBiZS1mYjBkLTRkNmMtODIzOS0wZjQ5MjAzNTEwN2YiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcxMzg2NjI3MywiZXhwIjoxNzEzOTUyNjczfQ.7eUaQke66-zxC5TykGj-SdNw31TKHYM7LBZKxNYWGgQ"
+      token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiJiOGFjNDBiZS1mYjBkLTRkNmMtODIzOS0wZjQ5MjAzNTEwN2YiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTcxNDAyMTQzMSwiZXhwIjoxNzE0MTA3ODMxfQ.SmrT8z9eQk1b0CaXfmckaNDXk2GKyBvH-Nehv7JWZGg"
     >
       {mode === Constants.modes.CONFERENCE ? <SpeakerView /> : <ViewerView />}
     </MeetingProvider>

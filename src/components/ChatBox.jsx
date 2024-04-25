@@ -6,11 +6,10 @@ import {
   onSnapshot,
   limit,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "./firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
 
-const scroll = useRef();
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
@@ -35,6 +34,7 @@ const ChatBox = () => {
     });
     return () => unsubscribe;
   }, []);
+
 
   return (
     <main className="chat-box">
