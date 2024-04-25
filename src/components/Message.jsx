@@ -20,6 +20,21 @@ const Message = ({ message }) => {
   }
 
   const isCurrentUser = user && message.uid === user.uid;
+  const currentTimestamp = (timestamp=Date.now()) => {
+    try {
+      const date = new Date(timestamp);
+      const options = { 
+        hour: 'numeric', 
+        minute: 'numeric', 
+      };
+      return date.toLocaleTimeString(undefined, options);
+    } catch (error) {
+      console.error("Error formatting timestamp:", error);
+      return "Invalid Date";
+    }
+  };
+  
+
 
   return (
     <div className={`chat-bubble ${isCurrentUser ? "right" : ""} px-10`}>
@@ -32,6 +47,7 @@ const Message = ({ message }) => {
         <p className="user-name" style={{ color: isCurrentUser ? "#6c757d" : "#6c757d" }}>{message.name}</p>
         <p className="user-message" style={{ color: "#212529" }}>{message.text}</p>
       </div>
+      <p className="message-timestamp">{currentTimestamp(message.timestamp)}</p>
     </div>
   );
 };

@@ -26,9 +26,6 @@ function HomePage() {
             to schedule meetings, share files, and collaborate in real-time.</p>
           <p className="text-base italic font-semibold">Experience the future of communication with Link Up!</p>
         </div>
-        <div className="flex-1">
-          <img src="src\assets\video mation.webp" className="w-96 h-96 mx-auto" alt="" />
-        </div>
       </div>
     )
 }

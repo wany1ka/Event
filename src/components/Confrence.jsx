@@ -7,6 +7,7 @@ import {
 } from "@videosdk.live/react-sdk";
 import { authToken, createMeeting } from "./ConfrenceAPI";
 import ReactPlayer from "react-player";
+import './styles/Confrence.css'
 
 function JoinScreen({ getMeetingAndToken }) {
   const [meetingId, setMeetingId] = useState(null);
