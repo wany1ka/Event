@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useCall, useCallStateHooks, ParticipantView, StreamVideoClient } from '@stream-io/video-react-sdk';
+import { StreamCall, useCall, useCallStateHooks, ParticipantView, StreamVideoClient } from '@stream-io/video-react-sdk';
 import '@stream-io/video-react-sdk/dist/css/styles.css';
 
 const apiKey = 'mmhfdzb5evj2';
@@ -72,4 +72,10 @@ const Live = () => {
   );
 };
 
-export default Live;
+const LiveWithContext = () => (
+  <StreamCall client={client}>
+    <Live />
+  </StreamCall>
+);
+
+export default LiveWithContext;
