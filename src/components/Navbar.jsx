@@ -13,7 +13,7 @@ const Navbar = () => {
                         <Link to="/contact" className="text-white hover:text-gray-300">Contact</Link>
                     </li>
                     <li>
-                        <Link to="/chat" className="text-white hover:text-gray-300">Chat</Link>
+                        <Link to="/screen" className="text-white hover:text-gray-300">Chat</Link>
                     </li>
                     <li>
                         <Link to="/chatsss" className="text-white hover:text-gray-300">Chatsss</Link>
@@ -23,9 +23,6 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link to="/live" className="text-white hover:text-gray-300">Live</Link>
-                    </li>
-                    <li>
-                        <Link to="/WelcomeScreenContainer" className="text-white hover:text-gray-300">Livestream</Link>
                     </li>
                 </ul>
 

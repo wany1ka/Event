@@ -5,7 +5,7 @@ import { collection, query, orderBy, onSnapshot, where, limit } from "firebase/f
 import { db } from "./firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
-import "./styles/ChatRoom.css"; // Import CSS file for styling
+import "./styles/ChatApp.css"; // Import CSS file for styling
 
 const ChatRoom = () => {
   const { roomId } = useParams();
