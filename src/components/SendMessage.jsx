@@ -1,45 +1,40 @@
+// SendMessage.js
 import React, { useState } from "react";
-import { auth, db } from "./firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "./firebase";
 import './styles/ChatApp.css'
 
-const SendMessage = ({ scroll }) => {
-    const [message, setMessage] = useState("");
-    const sendMessage = async (event) => {
-        setMessage("");
-        scroll.current.scrollIntoView({ behavior: "smooth" });
-        event.preventDefault();
-        if (message.trim() === "") {
-          alert("Enter valid message");
-          return;
-        }
-        const { uid, displayName, photoURL } = auth.currentUser;
-        await addDoc(collection(db, "messages"), {
-          text: message,
-          name: displayName,
-          avatar: photoURL,
-          createdAt: serverTimestamp(),
-          uid,
-        });
-        setMessage("");
-      };
+const SendMessage = ({ roomId }) => {
+  const [message, setMessage] = useState("");
+
+  const handleMessageSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (message.trim() === "") return; // Don't send empty messages
+      await addDoc(collection(db, "messages"), {
+        text: message,
+        roomId: roomId,
+        createdAt: serverTimestamp(),
+        // Add other message properties as needed
+      });
+      setMessage(""); // Clear the message input after sending
+    } catch (error) {
+      console.error("Error sending message: ", error);
+    }
+  };
 
   return (
-    <form  onSubmit={(event) => sendMessage(event)} className="send-message mx-40">
-      <label htmlFor="messageInput" hidden>
-        Enter Message
-      </label>
+    <form onSubmit={handleMessageSubmit}>
       <input
-        id="messageInput"
-        name="messageInput"
         type="text"
-        className="form-input__input text-black mx-"
-        placeholder="type message..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        placeholder="Type your message..."
+        required
       />
       <button type="submit">Send</button>
     </form>
   );
 };
+
 export default SendMessage;
