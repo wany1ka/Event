@@ -17,8 +17,8 @@ function HomePage() {
 
     return (
         <div className="m-5 flex flex-wrap items-center justify-center">
+        <button onClick={handleLogout} className=" py-2 px-4 rounded mb-4 mt-20 px-6 text-red-400 hover:bg-red-600 ">Logout</button>
         <div className="flex-1 text-center">
-          <button onClick={handleLogout} className=" py-2 px-4 rounded mb-4">Logout</button>
           <h1 className="text-2xl mb-5 font-bold">Welcome to Link Up - Your Ultimate Connection Hub!</h1>
           <p className="text-lg mb-3">With crystal-clear audio and high-definition video,<br />
             Link Up ensures that every interaction feels like you're <br />

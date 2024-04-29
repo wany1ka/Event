@@ -1,10 +1,9 @@
 body{
-    background-color: #52A79B;
-    color: #edf6f5;
+    background-color: #dee2e6;
     padding: 30px;
 }
 
-button{
+/* button{
     display: inline-block;
     padding: 10px 20px;
     margin: 15px 0;
@@ -24,7 +23,7 @@ button:hover{
     border: none;
     color: #18322e;
     box-shadow: 0 0 10px #18322e;
-}
+} */
 
 
 

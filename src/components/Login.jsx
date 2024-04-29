@@ -28,7 +28,7 @@ function Login() {
     return (
         <div className="logIn">
             <h1 className="font-bold">Step into a world of modern conferencing</h1>
-            <button className="button" onClick={handleClick}>Google Sign up</button>
+            <button className="loginButton" onClick={handleClick}>Google Sign up</button>
         </div>
     )
 }

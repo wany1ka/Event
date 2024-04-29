@@ -19,14 +19,14 @@ function JoinScreen({ getMeetingAndToken }) {
       <input
         type="text"
         placeholder="Enter Meeting Id"
-        className="text-black"
+        className="text-black ml-40 py-1 px-5 mb-4"
         onChange={(e) => {
           setMeetingId(e.target.value);
         }}
-      />
-      <button onClick={onClick}>Join</button>
+      /> <br />
+      <button onClick={onClick} className="py-2 px-4 ml-40 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none">Join</button>
       {" or "}
-      <button onClick={onClick}>Create Meeting</button>
+      <button onClick={onClick} className="py-2 px-4 mt-5 bg-blue-500 text-white rounded-lg shadow-md hover:bg-green-400 focus:outline-none">Create Meeting</button>
     </div>
   );
 }
