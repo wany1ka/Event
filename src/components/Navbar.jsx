@@ -22,6 +22,9 @@ const Navbar = () => {
                     <li>
                         <Link to="/contact" className="text-blue-500 hover:text-blue-700">Contact</Link>
                     </li>
+                    <li>
+                        <Link to="/chat2" className="text-blue-500 hover:text-blue-700">Contact</Link>
+                    </li>
                 </ul>
 
             </div>

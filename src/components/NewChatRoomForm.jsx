@@ -27,15 +27,16 @@ const NewChatRoomForm = ({ onRoomCreated }) => {
   return (
     <form onSubmit={handleFormSubmit}>
       <label>
-        Room Name:
+        <p className="text-lg mb-5">Room Name:</p>
         <input
+          className="text-blue-900"
           type="text"
           value={roomName}
           onChange={(e) => setRoomName(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Create Chat Room</button>
+      <button type="submit" className="ml-3 px-4 py-2 text-white rounded-lg shadow-md bg-sky-500 hover:bg-green-500 focus:outline-none">Create Chat Room</button>
     </form>
   );
 };

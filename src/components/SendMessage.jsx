@@ -26,6 +26,7 @@ const SendMessage = ({ roomId }) => {
   return (
     <form onSubmit={handleMessageSubmit}>
       <input
+        className="text-blue-900"
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}

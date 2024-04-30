@@ -7,7 +7,7 @@ const ChatRoomItem = ({ room }) => {
     <li>
       {/* Use Link component to navigate to the chat room page */}
       <Link to={`/chat/${room.id}`}>
-        <button>{room.name}</button>
+        <button className="text-green-500 hover:text-blue-500 text-lg font-semibold my-2">{room.name}</button>
       </Link>
     </li>
   );

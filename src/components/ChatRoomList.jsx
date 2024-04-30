@@ -32,7 +32,7 @@ const ChatRoomList = () => {
 
   return (
     <div>
-      <h2>Chat Rooms</h2>
+      <h1 className="font-bold text-blue-700 text-center text-xl">Chat Rooms</h1>
       {/* Display the form for creating new chat rooms */}
       <NewChatRoomForm onRoomCreated={handleRoomCreated} />
       <ul>

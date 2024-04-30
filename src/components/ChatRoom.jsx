@@ -37,11 +37,11 @@ const ChatRoom = () => {
   }, [roomId]);
 
   return (
-    <div className="chat-room-container">
+    <div className="chat-room-container m-5">
       <header className="chat-room-header">
-        <h2>Chat Room {roomId}</h2>
+        <h2 className="font-bold text-blue-700 text-center text-xl">Chat Room {roomId}</h2>
       </header>
-      <div className="message-container">
+      <div className="message-container mt-10 ml-4">
         {messages.map((message) => (
           <Message key={message.id} message={message} />
         ))}
