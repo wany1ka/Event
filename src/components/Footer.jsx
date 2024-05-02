@@ -33,7 +33,7 @@ const Footer = () => {
 export default Footer;
 
 const footerStyle = {
-  color: '#259d84',
+  color: '#16a34a',
   marginTop: '50px',
   padding: '50px 0',
 };

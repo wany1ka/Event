@@ -26,7 +26,7 @@ function HomePage() {
           <p className="text-base italic font-semibold">Experience the future of communication with Link Up!</p>
       </div>
       <div className="lg:w-1/3 lg:pl-10">
-                <img src="src\assets\Untitled design.png" alt="Your Image" className="w-full h-auto" />
+                <img src="src\assets\Untitled design.png" alt="Your Image" className="w-full h-auto opacity-75" />
             </div>
       <button onClick={handleLogout} className="py-2 px-4 rounded mb-4 mt-20 lg:mt-0 text-red-400 hover:bg-red-600">Logout</button>
   </div>
