@@ -11,7 +11,7 @@ import ChatRoomList from "./components/ChatRoomList";
 import ChatRoom from "./components/ChatRoom";
 import Screens from "./components/Screens";
 import ErrorPage from "./components/Error-page";
-import ChatApp from "./components/Message/Chat";
+import SendMessage from "./components/Message/SendMessage";
 
 const App = () => {
     return (
@@ -26,7 +26,7 @@ const App = () => {
                     <Route path='/screen' element={<Screens />} />
                     <Route path="/chat" element={<ChatRoomList />} />
                     <Route path="/chat/:roomId" element={<ChatRoom />} />
-                    <Route path="/chat2" element={<ChatApp />} />
+                    <Route path="/chat2" element={<SendMessage />} />
                     <Route path="*" element={<ErrorPage />} />
                 </Routes>
                 <Footer />

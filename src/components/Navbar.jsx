@@ -6,25 +6,25 @@ const Navbar = () => {
         <nav className="py-2 mb-6">
             <div className="mx-auto flex justify-between items-center mb-4">
                 <li>
-                    <Link to="/" className="text-blue-500 hover:text-blue-700">Home</Link>
+                    <Link to="/" className="text-green-600 hover:text-green-700">Home</Link>
                 </li>
 
                 <ul className="flex justify-center space-x-4">
                     <li>
-                        <Link to="/screen" className="text-blue-500 hover:text-blue-700">Live</Link>
+                        <Link to="/screen" className="text-green-600 hover:text-green-700">Live</Link>
                     </li>
                     <li>
-                        <Link to="/chat" className="text-blue-500 hover:text-blue-700">Chats</Link>
+                        <Link to="/chat" className="text-green-600 hover:text-green-700">Chats</Link>
                     </li>
                     <li>
-                        <Link to="/conference" className="text-blue-500 hover:text-blue-700">Conference</Link>
+                        <Link to="/conference" className="text-green-600 hover:text-green-700">Conference</Link>
                     </li>
                     <li>
-                        <Link to="/contact" className="text-blue-500 hover:text-blue-700">Contact</Link>
+                        <Link to="/contact" className="text-green-600 hover:text-green-700">Contact</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/chat2" className="text-blue-500 hover:text-blue-700">Contact</Link>
-                    </li>
+                    </li> */}
                 </ul>
 
             </div>

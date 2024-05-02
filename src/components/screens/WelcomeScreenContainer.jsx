@@ -14,7 +14,7 @@ const WelcomeScreenContainer = ({ setAppData }) => {
 
   return (
     <div className="">
-      <button onClick={createClick} className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none">Create new Meeting</button>
+      <button onClick={createClick} className="py-2 px-4 bg-green-500 text-white rounded-lg shadow-md hover:bg-emerald-600 focus:outline-none">Create new Meeting</button>
       <p>{"\n\nor\n\n"}</p>
       <input
         className="mt-5 py-2 px-4"
@@ -23,8 +23,8 @@ const WelcomeScreenContainer = ({ setAppData }) => {
         value={meetingId}
       />
       <p>{"\n\n"}</p>
-      <button onClick={hostClick} className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-green-600 focus:outline-none m-3 my-7">Join As Host</button>
-      <button onClick={viewerClick} className="py-2 px-4 bg-blue-500 text-white rounded-lg shadow-md hover:bg-green-400 focus:outline-none m-3">Join As Viewer</button>
+      <button onClick={hostClick} className="py-2 px-4 bg-emerald-500 text-white rounded-lg shadow-md hover:bg-green-600 focus:outline-none m-3 my-7">Join As Host</button>
+      <button onClick={viewerClick} className="py-2 px-4 bg-emerald-600 text-white rounded-lg shadow-md hover:bg-green-400 focus:outline-none m-3">Join As Viewer</button>
     </div>
   );
 };

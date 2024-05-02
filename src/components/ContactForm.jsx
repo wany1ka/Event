@@ -14,6 +14,7 @@ function App() {
             Name:
           </label>
           <input
+            className='text-black'
             id="fName"
             type="text"
             name="fName"
@@ -59,6 +60,7 @@ function App() {
             style={{ color: 'red', marginBottom: '10px' }}
           />
           <button
+          className='py-2 px-4 bg-emerald-500 text-white rounded-lg shadow-md hover:bg-emerald-600 focus:outline-none m-3 my-1'
             type="submit"
             disabled={state.submitting}
             style={{ cursor: 'pointer' }}

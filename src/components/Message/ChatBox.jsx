@@ -6,21 +6,22 @@ import {
   onSnapshot,
   limit,
 } from "firebase/firestore";
-import { db } from "./firebase";
+import { db } from "../firebase";
 import Message from "./Message";
 import SendMessage from "./SendMessage";
 
-import './styles/ChatApp.css'
 
 const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
+
   useEffect(() => {
     const q = query(
       collection(db, "messages"),
       orderBy("createdAt", "desc"),
       limit(50)
     );
+
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       const fetchedMessages = [];
       QuerySnapshot.forEach((doc) => {
@@ -33,6 +34,7 @@ const ChatBox = () => {
     });
     return () => unsubscribe;
   }, []);
+
   return (
     <main className="chat-box">
       <div className="messages-wrapper">
@@ -46,4 +48,5 @@ const ChatBox = () => {
     </main>
   );
 };
+
 export default ChatBox
