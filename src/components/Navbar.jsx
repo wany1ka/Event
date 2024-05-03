@@ -5,8 +5,8 @@ const Navbar = () => {
     return (
         <nav className="py-2 mb-6">
             <div className="mx-auto flex justify-between items-center mb-4">
-                <li>
-                    <Link to="/" className="text-green-600 hover:text-green-700">Home</Link>
+                <li className="list-none">
+                    <Link to="/" className="text-green-600 hover:text-green-700 ">Home</Link>
                 </li>
 
                 <ul className="flex justify-center space-x-4">

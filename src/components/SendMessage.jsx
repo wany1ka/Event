@@ -1,4 +1,3 @@
-// SendMessage.js
 import React, { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "./firebase";
@@ -10,12 +9,11 @@ const SendMessage = ({ roomId }) => {
   const handleMessageSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (message.trim() === "") return; // Don't send empty messages
+      if (message.trim() === "") return; // prevent empty messages
       await addDoc(collection(db, "messages"), {
         text: message,
         roomId: roomId,
         createdAt: serverTimestamp(),
-        // Add other message properties as needed
       });
       setMessage(""); // Clear the message input after sending
     } catch (error) {
