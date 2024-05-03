@@ -16,7 +16,7 @@ function HomePage() {
   }
 
   return (
-    <div className="m-5 flex flex-col lg:flex-row items-start lg:items-center justify-between">
+    <div className="m-5 flex flex-col lg:flex-row items-start lg:items-center justify-between text-center sm:text-left">
       <div className="text-left lg:w-2/3 lg:pr-10">
         <h1 className="text-2xl mb-5 font-bold">Welcome to Link Up - Your Ultimate Connection Hub!</h1>
         <p className="text-lg mb-3">With crystal-clear audio and high-definition video,<br />
