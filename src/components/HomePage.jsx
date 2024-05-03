@@ -27,7 +27,7 @@ function HomePage() {
       </div>
       <div className="lg:w-1/3 lg:pl-10">
         <button onClick={handleLogout} className="py-2 px-4 rounded mb-4 mt-20 ml-5 lg:mt-0 text-red-400 hover:bg-red-600">Logout</button>
-        <img src="public\static\images\green.png" alt="Image" className="w-full h-auto opacity-75" />
+        <img src="public\static\images\green.png" alt="" className="w-full h-auto opacity-75" />
       </div>
 
     </div>
